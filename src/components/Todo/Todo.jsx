@@ -12,8 +12,12 @@ const Todo = () => {
   };
 
   const addTodo = () => {
-    setTodos([...todos, input]);
-    setInput("");
+    if (input !== `""`) {
+      setTodos([...todos, input]);
+      setInput("");
+    } else {
+      alert("Please! write anything 🥲");
+    }
   };
 
   const deleteTodo = (id) => {
@@ -27,12 +31,13 @@ const Todo = () => {
     setInput(findTodo);
     setIsedit(true); // ekhane true na deoyar karone updateTodo te onClick hocche na. tai addTodo ekta new list create korteche
     setUpdate(id); // edit er jonno click kora value tar index number pass korlam.
-    // console.log(id);
+    console.log(id);
   };
 
   const updateTodo = () => {
     todos[update] = input; // todos e (setUpdate te pass kora index number) e input er value map kore show korteche.
-    // console.log(update); // edit value er index number
+    console.log(update); // edit value er index number
+
     setInput("");
     // setTodos("")
     setIsedit(false); // updateTodo te onClick korar pore isedit false hoye addTodo hoye gelo
